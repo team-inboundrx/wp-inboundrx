@@ -1,31 +1,35 @@
+# InboundRx Website
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+#### A WordPress site using modified Bosch custom theme
 
+#### By _**HK Kahng**_
 
-Welcome to your WordPress website on Cloud9 IDE!
+## Description
 
-To get you started, we've already...
+A custom WP theme with just enough base level content for customization and deployment.
 
-1) Started MySQL using:
+## Prerequisites
 
-   $ mysql-ctl start
+All the basic prerequisites for running WordPress 4.7.x apply here.
 
-2) Clicked the Run Project button
+## Installation
 
-3) Clicked on Preview > Preview Running Application
+Clone the repo, import the database, and off you go!
 
-And now you are ready to configure your WordPress admin interface!
+## Known Bugs
 
-Happy coding!
-The Cloud9 IDE team
+We're slipping into WordPress bug list territory here.
 
+## Support and contact details
 
-## Support & Documentation
+Contact me via GitHub!
 
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+## Technologies Used
+
+This site uses the following bits of Human ingenuity: WordPress, MySQL, CSS, jQuery, JavaScript, and of course PHP.
+
+### License
+
+Published under the MIT License.
+
+Copyright (c) 2017 **_InboundRx and HK Kahng_**
