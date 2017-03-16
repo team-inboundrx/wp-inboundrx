@@ -3,7 +3,7 @@
 (function($) {
 
    $('.triptych-panel-clickable').click(function() {
-      $(this).parent().find('.triptych-panel-body').toggle();
+      $(this).parent().find('.modal').modal('show');
     });
     
    $('.triptych-panel-unflip').click(function() {

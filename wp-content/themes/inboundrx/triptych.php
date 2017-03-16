@@ -18,7 +18,7 @@ get_template_part('templates/page', 'header'); ?>
 	           <?php while ( have_rows('triptych_panel') && $panel_id <= 2 ) : the_row(); ?>
 	               <?php $panel_id++; ?>
                     <div class="triptych">
-                      <?php if( get_sub_field('triptych_panel_image') ) {
+                      <?php if( get_sub_field('triptych_panel_image') && get_sub_field('triptych_panel_modal_content') ) {
                           $panel_display = array('none','inline',' triptych-panel-clickable');
                         } else {
                           $panel_display = array('inline','none','');
@@ -31,6 +31,25 @@ get_template_part('templates/page', 'header'); ?>
                             } else {
                               echo "triptych-panel-right";
                             } ?>">
+                            
+                            
+                            <?php if( get_sub_field('triptych_panel_modal_content') ): ?>
+                              <div class="modal fade" id="triptych-panel-<?php echo $panel_id; ?>-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel"><?php the_sub_field('triptych_panel_title'); ?></h5>
+                                    </div>
+                                    <div class="modal-body">
+                                      <?php echo the_sub_field('triptych_panel_modal_content'); ?>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            <?php endif; ?>
                             
                           <?php include(locate_template('templates/content-panel.php')); ?>
 
