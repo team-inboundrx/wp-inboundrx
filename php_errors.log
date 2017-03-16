@@ -1,0 +1,60 @@
+[03-Mar-2017 22:40:23 UTC] WordPress database error Table 'c9.wp_users' doesn't exist for query SELECT * FROM wp_users WHERE user_login = 'inboundrx' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), WP->init, wp_get_current_user, _wp_get_current_user, apply_filters('determine_current_user'), WP_Hook->apply_filters, call_user_func_array, wp_validate_auth_cookie, get_user_by, WP_User::get_data_by
+[03-Mar-2017 22:40:23 UTC] WordPress database error Table 'c9.wp_users' doesn't exist for query SELECT * FROM wp_users WHERE user_login = 'inboundrx' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), WP->init, wp_get_current_user, _wp_get_current_user, apply_filters('determine_current_user'), WP_Hook->apply_filters, call_user_func_array, wp_validate_logged_in_cookie, wp_validate_auth_cookie, get_user_by, WP_User::get_data_by
+[03-Mar-2017 22:40:25 UTC] WordPress database error Table 'c9.wp_users' doesn't exist for query SELECT * FROM wp_users WHERE user_login = 'inboundrx' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), WP->init, wp_get_current_user, _wp_get_current_user, apply_filters('determine_current_user'), WP_Hook->apply_filters, call_user_func_array, wp_validate_auth_cookie, get_user_by, WP_User::get_data_by
+[03-Mar-2017 22:40:25 UTC] WordPress database error Table 'c9.wp_users' doesn't exist for query SELECT * FROM wp_users WHERE user_login = 'inboundrx' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), WP->init, wp_get_current_user, _wp_get_current_user, apply_filters('determine_current_user'), WP_Hook->apply_filters, call_user_func_array, wp_validate_logged_in_cookie, wp_validate_auth_cookie, get_user_by, WP_User::get_data_by
+[03-Mar-2017 22:40:37 UTC] WordPress database error Table 'c9.wp_users' doesn't exist for query SELECT * FROM wp_users WHERE user_login = 'inboundrx' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), WP->init, wp_get_current_user, _wp_get_current_user, apply_filters('determine_current_user'), WP_Hook->apply_filters, call_user_func_array, wp_validate_auth_cookie, get_user_by, WP_User::get_data_by
+[03-Mar-2017 22:40:37 UTC] WordPress database error Table 'c9.wp_users' doesn't exist for query SELECT * FROM wp_users WHERE user_login = 'inboundrx' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), WP->init, wp_get_current_user, _wp_get_current_user, apply_filters('determine_current_user'), WP_Hook->apply_filters, call_user_func_array, wp_validate_logged_in_cookie, wp_validate_auth_cookie, get_user_by, WP_User::get_data_by
+[04-Mar-2017 01:49:32 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[04-Mar-2017 01:49:32 UTC] PHP Stack trace:
+[04-Mar-2017 01:49:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[04-Mar-2017 01:49:32 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[04-Mar-2017 01:49:32 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[04-Mar-2017 01:49:32 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[04-Mar-2017 01:49:32 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[04-Mar-2017 01:49:32 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[04-Mar-2017 01:49:32 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[04-Mar-2017 01:55:13 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[04-Mar-2017 01:55:13 UTC] PHP Stack trace:
+[04-Mar-2017 01:55:13 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[04-Mar-2017 01:55:13 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[04-Mar-2017 01:55:13 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[04-Mar-2017 01:55:13 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[04-Mar-2017 01:55:13 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[04-Mar-2017 01:55:13 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[04-Mar-2017 01:55:13 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[08-Mar-2017 20:31:45 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[08-Mar-2017 20:31:45 UTC] PHP Stack trace:
+[08-Mar-2017 20:31:45 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[08-Mar-2017 20:31:45 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[08-Mar-2017 20:31:45 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[08-Mar-2017 20:31:45 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[08-Mar-2017 20:31:45 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[08-Mar-2017 20:31:45 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[08-Mar-2017 20:31:45 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[09-Mar-2017 21:16:20 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[09-Mar-2017 21:16:20 UTC] PHP Stack trace:
+[09-Mar-2017 21:16:20 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[09-Mar-2017 21:16:20 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[09-Mar-2017 21:16:20 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[09-Mar-2017 21:16:20 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[09-Mar-2017 21:16:20 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[09-Mar-2017 21:16:20 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[09-Mar-2017 21:16:20 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[09-Mar-2017 21:18:57 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[09-Mar-2017 21:18:57 UTC] PHP Stack trace:
+[09-Mar-2017 21:18:57 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[09-Mar-2017 21:18:57 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[09-Mar-2017 21:18:57 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[09-Mar-2017 21:18:57 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[09-Mar-2017 21:18:57 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[09-Mar-2017 21:18:57 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[09-Mar-2017 21:18:57 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[09-Mar-2017 21:19:49 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[09-Mar-2017 21:19:49 UTC] PHP Stack trace:
+[09-Mar-2017 21:19:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[09-Mar-2017 21:19:49 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[09-Mar-2017 21:19:49 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[09-Mar-2017 21:19:49 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[09-Mar-2017 21:19:49 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[09-Mar-2017 21:19:49 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[09-Mar-2017 21:19:49 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433

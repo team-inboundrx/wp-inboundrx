@@ -1,0 +1,41 @@
+// Grid settings
+$enable-flex:           true;
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 630px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 920px,
+  // Extra large screen / wide desktop
+  xl: 1950px
+) !default;
+
+// Colors
+$brand-primary:         #3E5773;
+$black:                 #000000;
+$blue:                  #3E5773;
+$orange:                #E26932;
+$white:                 #f8f8f8;
+$grey:                  #b5b5b5;
+
+
+// Font Sizes
+$nav-menu-item:         20px;
+$section-title:         25px;
+$paragraph-title:       25px;
+$paragraph:             16px;
+
+// Triptych Panel Variables
+$triptych: (
+    margin-top:         20px,
+    width:              280px,
+    height:             400px,
+    height-title:       50px,
+    title-body-gap:     15px
+);
