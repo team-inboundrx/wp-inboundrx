@@ -45,6 +45,7 @@ get_template_part('templates/page', 'header'); ?>
                         echo "triptych-panel-right";
                       } ?>">
 
+                    <?php include(locate_template('templates/content-modal.php')); ?>
                     <?php include(locate_template('templates/content-panel.php')); ?>
                    
                   </div>

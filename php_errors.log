@@ -58,3 +58,12 @@
 [09-Mar-2017 21:19:49 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
 [09-Mar-2017 21:19:49 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
 [09-Mar-2017 21:19:49 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[16-Mar-2017 15:56:46 UTC] PHP Warning:  in_array() expects parameter 2 to be array, null given in /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php on line 433
+[16-Mar-2017 15:56:46 UTC] PHP Stack trace:
+[16-Mar-2017 15:56:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[16-Mar-2017 15:56:46 UTC] PHP   2. do_action() /home/ubuntu/workspace/wp-admin/admin-ajax.php:91
+[16-Mar-2017 15:56:46 UTC] PHP   3. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[16-Mar-2017 15:56:46 UTC] PHP   4. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[16-Mar-2017 15:56:46 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[16-Mar-2017 15:56:46 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[16-Mar-2017 15:56:46 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
