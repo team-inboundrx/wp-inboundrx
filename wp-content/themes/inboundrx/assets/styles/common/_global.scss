@@ -5,11 +5,12 @@ body {
     padding-top: 30px;
     margin-bottom: 40px;
     // background: linear-gradient(270deg, #3e5773, #18a2f0, #e26932);
-	background: linear-gradient(270deg, #eee, #ddd);
+	// background: linear-gradient(270deg, #eee, #ddd);
+	background: linear-gradient(270deg, #fffaf8, #f0f9ff);
 	background-size: 600% 600%;
-	-webkit-animation: Background-gradient 180s ease infinite;
-	-moz-animation: Background-gradient 180s ease infinite;
-	animation: Background-gradient 180s ease infinite;
+	-webkit-animation: Background-gradient 140s ease infinite;
+	-moz-animation: Background-gradient 140s ease infinite;
+	animation: Background-gradient 140s ease infinite;
 }
 
 .navbar {
@@ -20,15 +21,15 @@ body {
         font-family: Montserrat;
         font-size: $nav-menu-item;
         text-transform: uppercase;
-        
-        &:hover {
-            text-decoration: underline;
-        }
     }
 }
 
-footer.content-info {
-    margin-top: 30px;
+footer.content-info, .text-2 .widget_text {
+    margin-top: 60px;
+    text-align: center;
+    font-family: Raleway;
+    font-size: $paragraph * 0.9;
+    color: #999;
 }
 
 @-webkit-keyframes Background-gradient {

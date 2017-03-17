@@ -93,6 +93,7 @@
 .triptych-panel-title {
   @include triptych-panel-content($section-title);
   font-family: Montserrat;
+  font-weight: bold;
   line-height: map-get($triptych, height-title);
   min-height: map-get($triptych, height-title);
   margin-bottom: map-get($triptych, title-body-gap);
