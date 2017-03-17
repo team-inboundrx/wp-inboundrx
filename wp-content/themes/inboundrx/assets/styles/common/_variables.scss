@@ -11,7 +11,7 @@ $grid-breakpoints: (
   // Medium screen / tablet
   md: 768px,
   // Large screen / desktop
-  lg: 920px,
+  lg: 1100px,
   // Extra large screen / wide desktop
   xl: 1950px
 ) !default;
@@ -26,7 +26,7 @@ $grey:                  #b5b5b5;
 
 
 // Font Sizes
-$nav-menu-item:         20px;
+$nav-menu-item:         16px;
 $section-title:         25px;
 $paragraph-title:       25px;
 $paragraph:             16px;
@@ -35,7 +35,7 @@ $paragraph:             16px;
 $triptych: (
     margin-top:         20px,
     width:              280px,
-    height:             400px,
+    height:             395px,
     height-title:       50px,
-    title-body-gap:     15px
+    title-body-gap:     10px
 );
