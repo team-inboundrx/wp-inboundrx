@@ -1,4 +1,4 @@
-<div class="triptych-panel-title">
+<div class="triptych-panel-title  <?php echo $panel_display[2]; ?>">
     <?php the_sub_field('triptych_panel_title'); ?>
 </div>
 <div class="triptych-panel-body" id="triptych-panel-<?php echo $panel_id; ?>-content" style="display:<?php echo $panel_display[0]; ?>;">

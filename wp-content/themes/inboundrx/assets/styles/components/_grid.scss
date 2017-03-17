@@ -97,6 +97,9 @@
   line-height: map-get($triptych, height-title);
   min-height: map-get($triptych, height-title);
   margin-bottom: map-get($triptych, title-body-gap);
+  &:hover {
+    color: #ccc;
+  }
 }
 
 .triptych-panel-body {
