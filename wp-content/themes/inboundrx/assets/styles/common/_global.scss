@@ -6,11 +6,11 @@ body {
     margin-bottom: 40px;
     // background: linear-gradient(270deg, #3e5773, #18a2f0, #e26932);
 	// background: linear-gradient(270deg, #eee, #ddd);
-	background: linear-gradient(270deg, #fffaf8, #f0f9ff);
+	background: linear-gradient(270deg, #fff, #fff8f0, #fff, #f0f9ff);
 	background-size: 600% 600%;
-	-webkit-animation: Background-gradient 140s ease infinite;
-	-moz-animation: Background-gradient 140s ease infinite;
-	animation: Background-gradient 140s ease infinite;
+	-webkit-animation: Background-gradient 120s ease infinite;
+	-moz-animation: Background-gradient 120s ease infinite;
+	animation: Background-gradient 120s ease infinite;
 }
 
 .navbar {
