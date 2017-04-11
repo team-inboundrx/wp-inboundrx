@@ -67,3 +67,75 @@
 [16-Mar-2017 15:56:46 UTC] PHP   5. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
 [16-Mar-2017 15:56:46 UTC] PHP   6. acf_form_post->get_field_groups() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
 [16-Mar-2017 15:56:46 UTC] PHP   7. in_array() /home/ubuntu/workspace/wp-content/plugins/advanced-custom-fields-pro/forms/post.php:433
+[31-Mar-2017 03:45:15 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_blog_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:15 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[31-Mar-2017 03:45:15 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[31-Mar-2017 03:45:15 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:15 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:15 UTC] PHP   5. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:15 UTC] PHP   6. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:15 UTC] PHP   7. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:15 UTC] PHP   8. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[31-Mar-2017 03:45:16 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_blog_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:16 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/edit.php:0
+[31-Mar-2017 03:45:16 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/edit.php:10
+[31-Mar-2017 03:45:16 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-admin/admin.php:31
+[31-Mar-2017 03:45:16 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:16 UTC] PHP   5. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:16 UTC] PHP   6. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:16 UTC] PHP   7. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:16 UTC] PHP   8. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:16 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[31-Mar-2017 03:45:16 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_blog_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:16 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[31-Mar-2017 03:45:16 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[31-Mar-2017 03:45:16 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:16 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:16 UTC] PHP   5. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:16 UTC] PHP   6. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:16 UTC] PHP   7. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:16 UTC] PHP   8. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[31-Mar-2017 03:45:32 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_blog_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:32 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[31-Mar-2017 03:45:32 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[31-Mar-2017 03:45:32 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:32 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:32 UTC] PHP   5. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:32 UTC] PHP   6. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:32 UTC] PHP   7. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:32 UTC] PHP   8. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[31-Mar-2017 03:45:40 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:40 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/edit.php:0
+[31-Mar-2017 03:45:40 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/edit.php:10
+[31-Mar-2017 03:45:40 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-admin/admin.php:31
+[31-Mar-2017 03:45:40 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:40 UTC] PHP   5. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:40 UTC] PHP   6. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:40 UTC] PHP   7. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:40 UTC] PHP   8. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:40 UTC] PHP   9. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[31-Mar-2017 03:45:41 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:41 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[31-Mar-2017 03:45:41 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[31-Mar-2017 03:45:41 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:41 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:41 UTC] PHP   5. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:41 UTC] PHP   6. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:41 UTC] PHP   7. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:41 UTC] PHP   8. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298
+[31-Mar-2017 03:45:56 UTC] PHP Warning:  call_user_func_array() expects parameter 1 to be a valid callback, function 'create_post_type' not found or invalid function name in /home/ubuntu/workspace/wp-includes/class-wp-hook.php on line 298
+[31-Mar-2017 03:45:56 UTC] PHP Stack trace:
+[31-Mar-2017 03:45:56 UTC] PHP   1. {main}() /home/ubuntu/workspace/wp-admin/admin-ajax.php:0
+[31-Mar-2017 03:45:56 UTC] PHP   2. require_once() /home/ubuntu/workspace/wp-admin/admin-ajax.php:22
+[31-Mar-2017 03:45:56 UTC] PHP   3. require_once() /home/ubuntu/workspace/wp-load.php:37
+[31-Mar-2017 03:45:56 UTC] PHP   4. require_once() /home/ubuntu/workspace/wp-config.php:92
+[31-Mar-2017 03:45:56 UTC] PHP   5. do_action() /home/ubuntu/workspace/wp-settings.php:449
+[31-Mar-2017 03:45:56 UTC] PHP   6. WP_Hook->do_action() /home/ubuntu/workspace/wp-includes/plugin.php:453
+[31-Mar-2017 03:45:56 UTC] PHP   7. WP_Hook->apply_filters() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:323
+[31-Mar-2017 03:45:56 UTC] PHP   8. call_user_func_array:{/home/ubuntu/workspace/wp-includes/class-wp-hook.php:298}() /home/ubuntu/workspace/wp-includes/class-wp-hook.php:298

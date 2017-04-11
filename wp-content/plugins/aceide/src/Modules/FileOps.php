@@ -107,7 +107,7 @@ class FileOps implements Module
 
 		// set backup filename
 		$backup_path = 'backups' . preg_replace( "#\.php$#i", "_" . date( "Y-m-d-H" ) . ".php", $_POST['filename'] );
-		$backup_path_full = plugin_dir_path( __FILE__ ) . $backup_path;
+		$backup_path_full = plugin_dir_path( dirname( dirname( __FILE__ ) ) ) . $backup_path;
 		// create backup directory if not there
 		$new_file_info = pathinfo( $backup_path_full );
 
@@ -117,7 +117,7 @@ class FileOps implements Module
 
 		if ( $is_php ) {
 			// create the backup file adding some php to the file to enable direct restore
-			get_currentuserinfo();
+			$current_user = wp_get_current_user();
 			$user_md5 = md5( serialize( $current_user ) );
 
 			$restore_php = '<?php /* start AceIDE restore code */
@@ -140,7 +140,7 @@ die();
 		// save file
 		if ( $wp_filesystem->put_contents( $file_name, stripslashes( $_POST['content'] ) ) ) {
 			// lets create an extra long nonce to make it less crackable
-			get_currentuserinfo();
+			$current_user = wp_get_current_user();
 			$user_md5 = md5( serialize( $current_user ) );
 
 			$result = "\"" . $backup_path . ":::" . $user_md5 . "\"";

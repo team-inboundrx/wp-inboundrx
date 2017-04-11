@@ -16,6 +16,62 @@ var oHandler;
 
 var editor_options = {resizer:{}};
 
+// Fullscreen cross-browser fill
+document.fullscreenEnabled = document.fullscreenEnabled ||
+                             document.mozFullScreenEnabled ||
+                             document.msFullscreenEnabled ||
+                             document.documentElement.webkitRequestFullScreen;
+
+function requestFullscreen(element) {
+	if (element.requestFullscreen) {
+		element.requestFullscreen();
+		return true;
+	} else if (element.mozRequestFullScreen) {
+		element.mozRequestFullScreen();
+		return true;
+	} else if (element.webkitRequestFullScreen) {
+		element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+		return true;
+	} else if (element.msRequestFullscreen) {
+	    element.msRequestFullscreen();
+	    return true;
+	}
+
+    return false;
+}
+
+function fullscreenOnChange(cb) {
+    if (document.exitFullscreen) {
+        document.addEventListener('fullscreenchange', cb);
+    } else if (document.webkitExitFullscreen) {
+        document.addEventListener('webkitfullscreenchange', cb);
+    } else if (document.mozCancelFullScreen) {
+        document.addEventListener('mozfullscreenchange', cb);
+    } else if (document.msExitFullscreen) {
+        document.addEventListener('msfullscreenchange', cb);
+    }
+}
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
+}
+
+if (!document.hasOwnProperty('fullscreenElement')) {
+    Object.defineProperty(document, 'fullscreenElement', {
+        'get': function() {
+            return document.webkitFullscreenElement || document.mozFullscreenElement || document.msFullscreenElement || null;
+        }
+    });
+}
+
 function onSessionChange(e)  {
 
 	//set the document as unsaved
@@ -847,7 +903,7 @@ function display_editor_settings() {
 		resizable: false,
 		show: "fade",
 		close: load_editor_settings,
-		appendTo: jQuery("#wpbody-content")
+		appendTo: jQuery("#aceide_container")
 	}).dialog("moveToTop");
 }
 
@@ -866,7 +922,7 @@ function display_find_dialog() {
 		resizable: false,
 		show: "fade",
 		hide: "fade",
-		appendTo: jQuery("#wpbody-content")
+		appendTo: jQuery("#aceide_container")
 	}).dialog("moveToTop");
 
 }
@@ -878,7 +934,8 @@ function display_goto_dialog() {
 		width: "300",
 		resizable: false,
 		show: "fade",
-		hide: "fade"
+		hide: "fade",
+		appendTo: jQuery("#aceide_container")
 	});
 }
 
@@ -995,7 +1052,7 @@ jQuery(document).ready(function($) {
 		var options = {};
 
 		var direction   = jQuery( "#editor_find_dialog input[name='direction']" ).prop("checked");
-		var replacement = jQuery( "#editor_find_dialog input[name='replace']" ).val();
+		var replacement = jQuery( "#editor_find_dialog input[name='replacement']" ).val();
 		var start       = editor.getSelectionRange().start;
 
 
@@ -1017,7 +1074,7 @@ jQuery(document).ready(function($) {
 		var options = {};
 
 		var direction   = jQuery( "#editor_find_dialog input[name='direction']" ).prop("checked");
-		var replacement = jQuery( "#editor_find_dialog input[name='replace']" ).val();
+		var replacement = jQuery( "#editor_find_dialog input[name='replacement']" ).val();
 		var start       = editor.getSelectionRange().start;
 
 		options.needle          = jQuery( "#editor_find_dialog input[name='find']" ).val();
@@ -1118,12 +1175,7 @@ jQuery(document).ready(function($) {
 	//Key up command
 	editor.commands.addCommand({
 		name: "up",
-		bindKey: {
-			win: "Up",
-			mac: "Up",
-			sender: "editor"
-		},
-
+		bindKey: "Up",
 		exec: function(env, args, request) {
 			if (oHandler && oHandler.visible() === 'block'){
 				oHandler.previous();
@@ -1159,18 +1211,15 @@ jQuery(document).ready(function($) {
 */
 				editor.moveCursorTo(range.end.row-1, range.end.column);
 			}
-		}
+		},
+		scrollIntoView: "cursor"
 	});
 
 
 	//key down command
 	editor.commands.addCommand({
 		name: "down",
-		bindKey: {
-			win: "Down",
-			mac: "Down",
-			sender: "editor"
-		},
+		bindKey: "Down",
 		exec: function(env, args, request) {
 
 			if (oHandler && oHandler.visible() === 'block'){
@@ -1191,19 +1240,16 @@ jQuery(document).ready(function($) {
 				editor.clearSelection();
 				editor.moveCursorTo(range.end.row +1, range.end.column);
 			}
-		}
+		},
+		scrollIntoView: "cursor"
 	});
-
 
 
 	editor.commands.addCommand({
 		name: "enter",
-		bindKey: {
-			win: "Return",
-			mac: "Return",
-			sender: "editor"
-		},
-		exec: selectACitem
+		bindKey: "Return",
+		exec: selectACitem,
+		scrollIntoView: "cursor"
 	});
 
 	// save command:
@@ -1228,7 +1274,8 @@ jQuery(document).ready(function($) {
 		exec: function() {
 			var rows = editor.$getSelectedRows();
 			editor.session.duplicateLines( rows.first, rows.last );
-		}
+		},
+		scrollIntoView: "cursor"
 	});
 
 	// delete line:
@@ -1242,36 +1289,22 @@ jQuery(document).ready(function($) {
 		exec: function() {
 			editor.removeLines();
 			editor.selection.moveCursorUp();
-		}
+		},
+		scrollIntoView: "cursor"
 	});
 
 	// Move lines up
 	editor.commands.addCommand({
 		name: "shiftLinesUp",
 		bindKey: {
-			win: "",
+			win: "Ctrl-Shift-Up",
 			mac: "Command-Shift-Up",
 			sender: "editor"
 		},
 		exec: function() {
-			// Move rows down
-			var rows    = editor.$getSelectedRows();
-			editor.session.moveLinesUp( rows.first, rows.last );
-
-			if ( !editor.selection.isEmpty() && ( editor.selection.anchor.row == editor.selection.lead.row ) ) {
-				// Move selection down
-				console.log(rows);
-				rows.start.row++;
-				rows.end.row++;
-				rows.start.column   = 0;
-				rows.end.column     = 0;
-
-				editor.selection.moveCursorUp();
-				editor.selection.setSelectionRange( rows );
-			} else {
-				editor.selection.moveCursorUp();
-			}
-		}
+			editor.moveLinesUp();
+		},
+		scrollIntoView: "cursor"
 	});
 
 	// Move lines down
@@ -1284,23 +1317,9 @@ jQuery(document).ready(function($) {
 		},
 		exec: function() {
 			// Move rows down
-			var rows    = editor.$getSelectedRows();
-			editor.session.moveLinesDown( rows.first, rows.last );
-
-			if ( !editor.selection.isEmpty() && ( editor.selection.anchor.row == editor.selection.lead.row ) ) {
-				// Move selection down
-				console.log(rows);
-				rows.start.row++;
-				rows.end.row++;
-				rows.start.column   = 0;
-				rows.end.column     = 0;
-
-				editor.selection.moveCursorDown();
-				editor.selection.setSelectionRange( rows );
-			} else {
-				editor.selection.moveCursorDown();
-			}
-		}
+			editor.moveLinesDown();
+		},
+		scrollIntoView: "cursor"
 	});
 
 	// Show find dialog
@@ -1329,8 +1348,57 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+    editor.commands.addCommand({
+        name: "escape",
+        bindKey: "esc",
+        exec: function(editor) {
+            var element = editor.container.parentNode;
+
+            if (document.getElementById('ac').style.display === 'block') {
+                aceide_close_autocomplete();
+                return;
+            }
+
+            if (document.fullscreenElement !== null) {
+                element.className = element.className.replace(/\s?fullScreen/, '');
+                exitFullscreen();
+                editor.resize();
+                return;
+            }
+        }
+    });
+
+    editor.commands.addCommand({
+        name: "toggleFullscreen",
+        bindKey: "F11",
+        exec: function(editor) {
+            var element = editor.container.parentNode;
+
+            if (!requestFullscreen(element)) {
+                alert("Could not open full screen.");
+            }
+
+            element.className += ' fullScreen';
+            editor.resize();
+        }
+    });
 	//END COMMANDS
 
+    fullscreenOnChange(function() {
+        if (document.fullscreenElement === null) {
+            var element = document.getElementById("aceide_container");
+            element.className = element.className.replace(/\s?fullScreen/, '');
+            exitFullscreen();
+            editor.resize();
+        }
+    });
+
+    window.addEventListener('keydown', function(e) {
+        // Disable default fullscreen
+        if (e.keyCode === 122) {
+            e.preventDefault();
+        }
+    });
 
 	//click action for new directory/file submit link
 	$("#aceide_create_new_directory, #aceide_create_new_file").click(function(e){

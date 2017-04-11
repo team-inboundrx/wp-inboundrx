@@ -14,13 +14,14 @@ class IDE
 
 	private $modules = array();
 
-	function __construct() {
+	public function __construct() {
 		$this->site_url = get_bloginfo('url');
 
 		$actions = array (
 			array( 'admin_menu', array( &$this, 'add_my_menu_page' ) ),
 			array( 'admin_head', array( &$this, 'add_my_menu_icon' ) ),
 			array( 'admin_init', array( &$this, 'init_hooks' ) ),
+			array( 'network_admin_menu', array( &$this, 'add_my_menu_page' ) ),
 		);
 
 		// hook for processing incoming image saves
@@ -96,7 +97,7 @@ class IDE
 	}
 
 	public static function check_perms( $check_referrer=true ) {
-		$capability = ( is_multisite() ? 'manage_network_themes' : 'create_users' );
+		$capability = ( is_multisite() ? 'manage_network_themes' : 'edit_plugins' );
 
 		if ( defined( 'DISALLOW_FILE_EDIT' ) && ! apply_filters( 'aceide_override_disallow_file_edit', ! DISALLOW_FILE_EDIT ) ) {
 			wp_die( '<p>' . __( 'You do not have sufficient permissions to edit templates for this site. SORRY' ) . '</p>' );
@@ -141,52 +142,63 @@ class IDE
 	}
 
 	public function add_admin_js() {
-		$plugin_path = trailingslashit(plugin_dir_url( __FILE__ ));
-		$ver = $this->ace_version;
+		$plugin_path = trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'AceIDE.php';
+		$plugin_url  = trailingslashit( plugin_dir_url( $plugin_path ) );
+
+		$acever = $this->ace_version;
+		$idever = get_plugin_data( $plugin_path, false, false );
+		$idever = $idever['Version'];
 
 		// include file tree
-		wp_enqueue_script( 'jquery-file-tree', plugins_url( 'js/jqueryFileTree.js', __FILE__ ), array( 'jquery' ) );
+		wp_enqueue_script( 'jquery-file-tree', plugins_url( 'js/jqueryFileTree.js', __FILE__ ), array( 'jquery' ), $idever );
 		// include ace
-		wp_enqueue_script( 'ace', "{$plugin_path}js/ace-{$ver}/ace.js" );
+		wp_enqueue_script( 'ace', "{$plugin_url}src/js/ace-{$acever}/ace.js", array(), $idever );
 		// include ace modes for css, javascript & php
-		wp_enqueue_script( 'ace-mode-css', "{$plugin_path}js/ace-{$ver}/mode-css.js", array( 'ace' ) );
-		wp_enqueue_script( 'ace-mode-less', "{$plugin_path}js/ace-{$ver}/mode-less.js", array( 'ace' ) );
-		wp_enqueue_script( 'ace-mode-javascript', "{$plugin_path}js/ace-{$ver}/mode-javascript.js", array( 'ace' ) );
-		wp_enqueue_script( 'ace-mode-php', "{$plugin_path}js/ace-{$ver}/mode-php.js", array( 'ace' ) );
-		wp_enqueue_script( 'ace-mode-twig', "{$plugin_path}js/ace-{$ver}/mode-twig.js", array( 'ace' ) );
+		wp_enqueue_script( 'ace-mode-css', "{$plugin_url}src/js/ace-{$acever}/mode-css.js", array( 'ace' ), $idever );
+		wp_enqueue_script( 'ace-mode-less', "{$plugin_url}src/js/ace-{$acever}/mode-less.js", array( 'ace' ), $idever );
+		wp_enqueue_script( 'ace-mode-javascript', "{$plugin_url}src/js/ace-{$acever}/mode-javascript.js", array( 'ace' ), $idever );
+		wp_enqueue_script( 'ace-mode-php', "{$plugin_url}src/js/ace-{$acever}/mode-php.js", array( 'ace' ), $idever );
+		wp_enqueue_script( 'ace-mode-twig', "{$plugin_url}src/js/ace-{$acever}/mode-twig.js", array( 'ace' ), $idever );
 		// include ace theme
-		wp_enqueue_script( 'ace-theme', "{$plugin_path}js/ace-{$ver}/theme-dawn.js", array( 'ace' ) ); // ambiance looks really nice for high contrast
+		wp_enqueue_script( 'ace-theme', "{$plugin_url}src/js/ace-{$acever}/theme-dawn.js", array( 'ace' ), $idever ); // ambiance looks really nice for high contrast
 		// load emmet
-		wp_enqueue_script( 'aceide-ext-emmet', "{$plugin_path}js/ace-{$ver}/ext-emmet.js", array( 'ace' ) );
-		wp_enqueue_script( 'aceide-emmet', "{$plugin_path}js/emmet.js", array( 'aceide-ext-emmet' ) );
+		wp_enqueue_script( 'aceide-ext-emmet', "{$plugin_url}src/js/ace-{$acever}/ext-emmet.js", array( 'ace' ), $idever );
+		wp_enqueue_script( 'aceide-emmet', "{$plugin_url}src/js/emmet.js", array( 'aceide-ext-emmet' ), $idever );
 		// wordpress-completion tags
-		wp_enqueue_script( 'aceide-wordpress-completion', "{$plugin_path}js/autocomplete/wordpress.js", array( 'ace' ) );
+		wp_enqueue_script( 'aceide-wordpress-completion', "{$plugin_url}src/js/autocomplete/wordpress.js", array( 'ace' ), $idever );
 		// php-completion tags
-		wp_enqueue_script( 'aceide-php-completion', "{$plugin_path}js/autocomplete/php.js", array( 'ace' ) );
+		wp_enqueue_script( 'aceide-php-completion', "{$plugin_url}src/js/autocomplete/php.js", array( 'ace' ), $idever );
 		// load editor
-		wp_enqueue_script( 'aceide-load-editor', "{$plugin_path}js/load-editor.js", array( 'ace', 'jquery', 'jquery-ui-core', 'jquery-ui-dialog' ) );
+		wp_enqueue_script( 'aceide-load-editor', "{$plugin_url}src/js/load-editor.js", array( 'ace', 'jquery', 'jquery-ui-core', 'jquery-ui-dialog' ), $idever );
 		// load filetree menu
-		wp_enqueue_script( 'aceide-load-filetree-menu', "{$plugin_path}js/load-filetree-menu.js", array( 'ace', 'jquery' ) );
+		wp_enqueue_script( 'aceide-load-filetree-menu', "{$plugin_url}src/js/load-filetree-menu.js", array( 'ace', 'jquery' ), $idever );
 		// load autocomplete dropdown
-		wp_enqueue_script( 'aceide-dd', "{$plugin_path}js/jquery.dd.js", array( 'ace', 'jquery' ) );
+		wp_enqueue_script( 'aceide-dd', "{$plugin_url}src/js/jquery.dd.js", array( 'ace', 'jquery' ), $idever );
 
 		// load color picker
-		wp_enqueue_script( 'ImageColorPicker', plugins_url( 'js/ImageColorPicker.js', __FILE__ ), array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ),  '0.3' );
+		wp_enqueue_script( 'ImageColorPicker', "{$plugin_url}src/js/ImageColorPicker.js", array( 'jquery', 'jquery-ui-core', 'jquery-ui-widget' ),  $idever );
 	}
 
 	public function add_admin_styles() {
+		$plugin_path = trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'AceIDE.php';
+		$plugin_url  = trailingslashit( plugin_dir_url( $plugin_path ) );
+
+		$acever = $this->ace_version;
+		$idever = get_plugin_data( $plugin_path, false, false );
+		$idever = $idever['Version'];
+
 		// main AceIDE styles
-		wp_register_style( 'aceide_style', plugins_url( 'aceide.css', __FILE__ ) );
+		wp_register_style( 'aceide_style', "{$plugin_url}src/aceide.css", array(), $idever );
 		wp_enqueue_style( 'aceide_style' );
 		// filetree styles
-		wp_register_style( 'aceide_filetree_style', plugins_url( 'css/jqueryFileTree.css', __FILE__ ) );
+		wp_register_style( 'aceide_filetree_style', "{$plugin_url}src/css/jqueryFileTree.css", array( 'aceide_style' ), $idever );
 		wp_enqueue_style( 'aceide_filetree_style' );
 		// autocomplete dropdown styles
-		wp_register_style( 'aceide_dd_style', plugins_url( 'dd.css', __FILE__ ) );
+		wp_register_style( 'aceide_dd_style', "{$plugin_url}src/dd.css", array( 'aceide_style' ), $idever );
 		wp_enqueue_style( 'aceide_dd_style' );
 
 		// jquery ui styles
-		wp_register_style( 'aceide_jqueryui_style', plugins_url( 'css/flick/jquery-ui-1.8.20.custom.css', __FILE__ ) );
+		wp_register_style( 'aceide_jqueryui_style', "{$plugin_url}src/css/flick/jquery-ui-1.8.20.custom.css", array( 'aceide_style' ), $idever );
 		wp_enqueue_style( 'aceide_jqueryui_style' );
 	}
 
@@ -479,9 +491,9 @@ class IDE
 		}
 
 		if ( version_compare( $wp_version, '3.8', '<' ) ) {
-			$this->menu_hook = add_menu_page( 'AceIDE', 'AceIDE', 'create_users', "aceide", array( &$this, 'my_menu_page' ) );
+			$this->menu_hook = add_menu_page( 'AceIDE', 'AceIDE', 'edit_plugins', "aceide", array( &$this, 'my_menu_page' ) );
 		} else {
-			$this->menu_hook = add_menu_page( 'AceIDE', 'AceIDE', 'create_users', "aceide", array( &$this, 'my_menu_page' ), 'dashicons-editor-code' );
+			$this->menu_hook = add_menu_page( 'AceIDE', 'AceIDE', 'edit_plugins', "aceide", array( &$this, 'my_menu_page' ), 'dashicons-editor-code' );
 		}
 	}
 
@@ -663,6 +675,7 @@ class IDE
 		?>
 		<div id="poststuff" class="metabox-holder has-right-sidebar">
 			<div id="side-info-column" class="inner-sidebar">
+				<img src="<?php echo plugins_url( 'images/logo.png', __FILE__ ); ?>" id="aceidelogo" />
 				<div id="aceide_info">
 					<div id="aceide_info_content"></div>
 				</div>
@@ -701,33 +714,34 @@ class IDE
 			</div>
 
 			<div id="post-body">
-				<div id="aceide_toolbar" class="quicktags-toolbar">
-					<div id="aceide_toolbar_tabs"> </div>
-					<div id="dialog_window_minimized_container"></div>
+		        <div id="aceide_container">
+					<div id="aceide_toolbar" class="quicktags-toolbar">
+						<div id="aceide_toolbar_tabs"> </div>
+						<div id="dialog_window_minimized_container"></div>
+					</div>
+	
+					<div id="aceide_toolbar_buttons">
+						<div id="aceide_message"></div>
+						<a class="button restore" style="display:none;" title="<?php esc_attr_e( 'Restore the active tab' ); ?>" href="#"><?php _e( 'Restore &#10012;' ); ?></a>
+					</div>
+					<div id='fancyeditordiv'></div>
+					<form id="aceide_save_container" action="" method="get">
+						<div id="aceide_footer_message"></div>
+						<div id="aceide_footer_message_last_saved"></div>
+						<div id="aceide_footer_message_unsaved"></div>
+	
+					  	<a href="#" id="aceide_save" alt="<?php esc_attr_e( 'Keyboard shortcut to save [Ctrl/Cmd + S]' ); ?>" title="<?php esc_attr_e( 'Keyboard shortcut to save [Ctrl/Cmd + S]' ); ?>" class="button-primary"><?php esc_html_e( 'SAVE FILE' ); ?></a>
+						<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ): ?>
+						<a href="#" id="aceide_git" alt="Open the Git overlay" title="Open the Git overlay" class="button-secondary"><?php esc_html_e( 'Git' ); ?></a>
+						<?php endif; ?>
+						<input type="hidden" id="filename" name="filename" value="" />
+						<?php
+							if ( function_exists( 'wp_nonce_field' ) ) {
+								wp_nonce_field('plugin-name-action_aceidenonce');
+							}
+						?>
+					</form>
 				</div>
-
-				<div id="aceide_toolbar_buttons">
-					<div id="aceide_message"></div>
-					<a class="button restore" style="display:none;" title="<?php esc_attr_e( 'Restore the active tab' ); ?>" href="#"><?php _e( 'Restore &#10012;' ); ?></a>
-				</div>
-				<div id='fancyeditordiv'></div>
-
-				<form id="aceide_save_container" action="" method="get">
-					<div id="aceide_footer_message"></div>
-					<div id="aceide_footer_message_last_saved"></div>
-					<div id="aceide_footer_message_unsaved"></div>
-
-				  	<a href="#" id="aceide_save" alt="<?php esc_attr_e( 'Keyboard shortcut to save [Ctrl/Cmd + S]' ); ?>" title="<?php esc_attr_e( 'Keyboard shortcut to save [Ctrl/Cmd + S]' ); ?>" class="button-primary"><?php esc_html_e( 'SAVE FILE' ); ?></a>
-					<?php if ( defined( 'WP_DEBUG' ) && WP_DEBUG ): ?>
-					<a href="#" id="aceide_git" alt="Open the Git overlay" title="Open the Git overlay" class="button-secondary"><?php esc_html_e( 'Git' ); ?></a>
-					<?php endif; ?>
-					<input type="hidden" id="filename" name="filename" value="" />
-					<?php
-						if ( function_exists( 'wp_nonce_field' ) ) {
-							wp_nonce_field('plugin-name-action_aceidenonce');
-						}
-					?>
-				</form>
 			</div>
 		</div>
 		<div id="editor_find_dialog" title="<?php esc_attr_e( 'Find...' ); ?>" style="padding: 0px; display: none;">
@@ -739,7 +753,7 @@ class IDE
 			<?php endif; ?>
 			<form id="find-inline" style="position: relative; padding: 4px; margin: 0px; height: 100%; overflow: hidden; width: 400px;">
 				<label class="left"> <?php esc_html_e( 'Find' ); ?><input type="search" name="find" /></label>
-				<label class="left"> <?php esc_html_e( 'Replace' ); ?><input type="search" name="replace" /></label>
+				<label class="left"> <?php esc_html_e( 'Replace' ); ?><input type="search" name="replacement" /></label>
 				<div class="clear" style="height: 33px;"></div>
 
 				<label><input type="checkbox" name="wrap" checked="checked" /> <?php esc_html_e( 'Wrap Around' ); ?></label>

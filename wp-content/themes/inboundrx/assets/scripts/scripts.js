@@ -1,6 +1,10 @@
 /*global jQuery*/
 
 (function($) {
+   
+   $('#menu-item-197 > a').click(function() {
+      $('#cta-modal').modal('show');
+    });
 
    $('.triptych-panel-clickable').click(function() {
       $(this).parent().find('.modal').modal('show');

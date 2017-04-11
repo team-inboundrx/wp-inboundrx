@@ -47,3 +47,16 @@ footer.content-info, .text-2 .widget_text {
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
 }
+
+#menu-item-197 > a {
+    background-color: $brand-primary;
+    color: $white;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+    border: 1px solid;
+    
+    &:hover {
+        background-color: $white;
+        color: $brand-primary;
+    }
+}

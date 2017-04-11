@@ -28,6 +28,36 @@ foreach ($sage_includes as $file) {
 }
 unset($file, $filepath);
 
+// Custom Post Type for Blog Entry
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'blog',
+    array(
+      'capabilities' => array(
+        'create_posts' => true,
+      ),
+      'has_archive' => true,
+      'labels' => array(
+        'name' => __( 'InboundRx Blog' ),
+        'singular_name' => __( 'Blog Entry' ),
+        'edit_item' => 'Edit Blog Entry',
+        'new_item' => 'New Blog Entry',
+        'view_item' => 'View Blog Entry',
+        'search_items' => 'Search Blog Entries',
+        'not_found' => 'No Blog Entries found',
+        'all_items' => 'All Blog Entries',
+      ),
+      'map_meta_cap' => true,
+      'public' => true,
+      'rewrite' => array(
+        'with_front' => false,
+      ),
+      'supports' => array('title','author','editor','thumbnail'),
+    )
+  );
+}
+
 // ACF plugin settings for custom theme fields
 
 if( function_exists('acf_add_local_field_group') ):
