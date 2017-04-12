@@ -2,7 +2,7 @@
 
 (function($) {
    
-   $('#menu-item-197 > a').click(function() {
+   $('#menu-main-menu li:last-of-type > a').click(function() {
       $('#cta-modal').modal('show');
     });
 
